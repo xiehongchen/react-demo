@@ -9,4 +9,13 @@ export default defineConfig({
       '@': '/src',
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://159.75.164.22:3000',
+        changeOrigin: true, //开启代理
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
 })
