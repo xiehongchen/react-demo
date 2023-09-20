@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { Button } from 'antd';
 
 // 导入页面组件
-import Login from './pages/Login'
-import Layout from './pages/Layout'
+import Login from './views/Login'
+import Layout from './views/Layout'
 
 // 配置路由规则
 function App() {
@@ -17,9 +16,6 @@ function App() {
           </Routes>
         </div>
       </BrowserRouter>
-      <div className="App">
-        <Button type="primary">Button</Button>
-      </div>
     </>
   )
 }

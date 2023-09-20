@@ -4,11 +4,6 @@ import react from '@vitejs/plugin-react-swc'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  resolve: {
-    alias: {
-      '@': '/src',
-    },
-  },
   server: {
     proxy: {
       '/api': {
@@ -16,6 +11,11 @@ export default defineConfig({
         changeOrigin: true, //开启代理
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
+    },
+  },
+  resolve: {
+    alias: {
+      '@': '/src',
     },
   },
 })
