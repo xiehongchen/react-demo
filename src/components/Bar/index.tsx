@@ -14,7 +14,6 @@ function echartInit(node: HTMLElement, xData: object, sData: object, title: stri
     yAxis: {},
     series: [
       {
-        name: '销量',
         type: 'bar',
         data: sData
       }
