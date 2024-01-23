@@ -1,9 +1,12 @@
 .ant-layout {
-  height: 100vh;
+  height: calc(100vh - 70px);
 }
 
 .header {
   padding: 0;
+  height: 70px;
+  display: flex;
+  align-items: center;
 }
 
 .logo {

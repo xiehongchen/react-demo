@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { setToken, getToken, http } from '@/utils'
+import { setToken, getToken, http, clearToken } from '@/utils'
 interface loginType {
   mobile: string
   code: string
@@ -19,6 +19,11 @@ class LoginStore {
       this.token = res.data.token
       setToken(res.data.token)
     })
+  }
+
+  loginOut = () => {
+    this.token = ''
+    clearToken()
   }
 }
 
