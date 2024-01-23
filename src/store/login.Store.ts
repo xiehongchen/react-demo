@@ -1,5 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import { setToken, getToken, http } from '@/utils'
+interface loginType {
+  mobile: string
+  code: string
+}
 
 class LoginStore {
   token = getToken() || ''
@@ -7,13 +11,14 @@ class LoginStore {
     makeAutoObservable(this)
   }
 
-  login = async ({ mobile, code }) => {
-    const res = await http.post('http://geek.itheima.net/v1_0/authorizations', {
+  login = async ({ mobile, code }: loginType) => {
+    await http.post('http://geek.itheima.net/v1_0/authorizations', {
       mobile,
       code
+    }).then(res => {
+      this.token = res.data.token
+      setToken(res.data.token)
     })
-    this.token = res.data.token
-    setToken(res.data.token)
   }
 }
 

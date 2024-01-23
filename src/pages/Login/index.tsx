@@ -1,8 +1,8 @@
 /*
  * @Author: liaozhaozhou liaozhaozhou@ecyao.com
  * @Date: 2024-01-22 14:09:03
- * @LastEditors: liaozhaozhou liaozhaozhou@ecyao.com
- * @LastEditTime: 2024-01-22 15:30:59
+ * @LastEditors: xiehongchen 1754581057@qq.com
+ * @LastEditTime: 2024-01-23 11:37:55
  * @FilePath: /react-demo/src/pages/Login/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -12,15 +12,21 @@ import { useStore } from '@/store'
 import { useNavigate } from 'react-router'
 import './index.scss'
 
+interface loginType {
+  code: string
+  mobile: string
+  remember: boolean
+}
 const Login = () => {
   const navigate = useNavigate()
   const { loginStore } = useStore()
-  const onFinish = async values => {
+  const onFinish = async (values: loginType) => {
+    console.log('values', values)
     const { mobile, code } = values
     try {
       await loginStore.login({ mobile, code })
       navigate('/')
-    } catch (e) {
+    } catch (e: any) {
       message.error(e?.response?.data?.message || '登录失败')
     }
   }
