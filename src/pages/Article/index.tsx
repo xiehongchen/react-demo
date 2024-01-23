@@ -18,7 +18,7 @@ import { history } from "@/utils/history"
 const { RangePicker } = DatePicker
 const Article = () => {
   // 筛选功能
-  const onSearch = (values: any) => {
+  const onSearch = (values: {status: number, channel: number, date: Date[]}) => {
     const { status, channel, date } = values
     const _params = {} as { status: number, channel: number, begin_pubdate: string, end_pubdate: string }
     _params.status = status
@@ -26,8 +26,8 @@ const Article = () => {
       _params.channel = channel
     }
     if (date) {
-      _params.begin_pubdate = date[0].format('YYYY-MM-DD')
-      _params.end_pubdate = date[1].format('YYYY-MM-DD')
+      _params.begin_pubdate = date[0].toISOString().split('T')[0];
+      _params.end_pubdate = date[1].toISOString().split('T')[0];
     }
     setParams({
       ...params,
@@ -72,7 +72,7 @@ const Article = () => {
     fetchChannels()
   }, [])
 
-  const delArticle = async (item: any) => {
+  const delArticle = async (item: {id: string}) => {
     await http.delete(`/mp/article/${item.id}`)
     setParams({
       page: 1,
@@ -118,7 +118,7 @@ const Article = () => {
     },
     {
       title: '操作',
-      render: (data: {id: string}) => {
+      render: (data: any) => {
         return (
           <Space size="middle">
             <Button

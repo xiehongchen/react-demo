@@ -49,8 +49,8 @@ const BaseLayout = () => {
   useEffect(() => {
     try {
       userStore.getUserInfo()
-    } catch {}
-  }, [useStore])
+    } catch { /* empty */ }
+  }, [userStore])
   const onClick: MenuProps['onClick'] = (e) => {
     console.log('click', e)
   }
