@@ -2,7 +2,7 @@
  * @Author: xiehongchen 1754581057@qq.com
  * @Date: 2024-01-23 11:40:11
  * @LastEditors: xiehongchen 1754581057@qq.com
- * @LastEditTime: 2024-01-23 18:04:11
+ * @LastEditTime: 2024-01-24 10:19:46
  * @FilePath: /react-demo/src/pages/Article/index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -18,7 +18,7 @@ import { history } from "@/utils/history"
 const { RangePicker } = DatePicker
 const Article = () => {
   // 筛选功能
-  const onSearch = (values: {status: number, channel: number, date: Date[]}) => {
+  const onSearch = (values: { status: number, channel: number, date: Date[] }) => {
     const { status, channel, date } = values
     const _params = {} as { status: number, channel: number, begin_pubdate: string, end_pubdate: string }
     _params.status = status
@@ -72,7 +72,7 @@ const Article = () => {
     fetchChannels()
   }, [])
 
-  const delArticle = async (item: {id: string}) => {
+  const delArticle = async (item: { id: string }) => {
     await http.delete(`/mp/article/${item.id}`)
     setParams({
       page: 1,
